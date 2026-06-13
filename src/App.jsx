@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/global.css';
 
+import Dash from './components/Dash'; // 1. Import your Dash welcome component
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
@@ -10,18 +11,12 @@ import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 
-// ── Asset imports ──────────────────────────────────────────────
-// Replace these with your actual asset imports once images are in src/assets/
-// import profileImg from './assets/filename.png';
-// import profImg from './assets/profimg.png';
-// import pro1Img from './assets/pro1.jpeg';
-// import pro2Img from './assets/pro2.jpeg';
-
-// Placeholder fallback (base64 1x1 transparent PNG)
 const PLACEHOLDER = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
 
 function App() {
   const [active, setActive] = useState('home');
+  // 2. State tracking whether to show the dashboard or inner portfolio
+  const [showMainPortfolio, setShowMainPortfolio] = useState(false);
 
   // Scroll-to-section approach (single-page, no router needed)
   const navigate = (id) => {
@@ -30,8 +25,15 @@ function App() {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Update active section on scroll
-  React.useEffect(() => {
+  // Custom function passed to Dash to handle welcome interface transitions
+  const handleEnterPortfolio = () => {
+    setShowMainPortfolio(true);
+  };
+
+  // Update active section on scroll (Only runs if the main portfolio view is mounted)
+  useEffect(() => {
+    if (!showMainPortfolio) return;
+
     const sections = ['home', 'about', 'skills', 'projects', 'education', 'certifications', 'contact'];
     const observer = new IntersectionObserver(
       (entries) => {
@@ -44,19 +46,24 @@ function App() {
       },
       { threshold: 0.4 }
     );
+    
     sections.forEach(id => {
       const el = document.getElementById(`section-${id}`);
       if (el) observer.observe(el);
     });
+
     return () => observer.disconnect();
-  }, []);
+  }, [showMainPortfolio]);
 
-  // ── IMPORTANT: swap these once images are in assets ──
-  const profileImg = PLACEHOLDER; // replace with: profileImg from assets
-  const profImg    = PLACEHOLDER; // replace with: profImg from assets
-  const pro1Img    = PLACEHOLDER; // replace with: pro1Img from assets
-  const pro2Img    = PLACEHOLDER; // replace with: pro2Img from assets
+  // Fallback image imports
+  const profileImg = PLACEHOLDER; 
 
+  // 3. Conditional Render: Show Dash welcome interface first
+  if (!showMainPortfolio) {
+    return <Dash onEnter={handleEnterPortfolio} />;
+  }
+
+  // 4. Fallback Render: Show standard single-page portfolio layout shell
   return (
     <div className="app-shell">
       <Navbar active={active} onNavigate={navigate} profileImg={profileImg} />
