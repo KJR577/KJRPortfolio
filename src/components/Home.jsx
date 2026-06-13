@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Home.css';
 import profileImg from '../assets/profimg.png';
-import kenvinResume from '..\assets\Kenvin_Jose_Roys_J_Resume.pdf';
+import kenvinResume from '../assets/Kenvin_Jose_Roys_J_Resume.pdf';
 
 function Home() {
   return (
