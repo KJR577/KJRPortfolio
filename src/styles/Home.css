@@ -145,8 +145,6 @@
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   border: 3px solid rgba(15, 164, 175, 0.5);
 }
-
-/* Floating badge */
 .home-badge {
   position: absolute;
   bottom: 24px;
