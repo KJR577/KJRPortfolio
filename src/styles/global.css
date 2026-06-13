@@ -1,0 +1,177 @@
+/* ============================================================
+   GLOBAL DESIGN SYSTEM — Kenvin Jose Roys Portfolio
+   Palette: Deep Navy + Gold + Off-White + Slate
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  /* Core palette */
+  --navy:       #0A0F2C;
+  --navy-light: #111733;
+  --navy-mid:   #1A2050;
+  --gold:       #F5C518;
+  --gold-muted: #C9A227;
+  --cream:      #F8F6F0;
+  --white:      #FFFFFF;
+  --slate:      #8B95B0;
+  --slate-light:#C4CAD8;
+  --border:     rgba(245,197,24,0.18);
+  --card-bg:    rgba(255,255,255,0.04);
+  --card-hover: rgba(245,197,24,0.07);
+
+  /* Typography */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body:    'Space Grotesk', system-ui, sans-serif;
+
+  /* Spacing */
+  --nav-width: 260px;
+  --section-pad: 3rem 3rem 3rem 3.5rem;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur: 0.25s;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  background-color: var(--navy);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { display: block; max-width: 100%; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold-muted); border-radius: 99px; }
+
+/* ── Layout shell ── */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Main content area ── */
+.main-content {
+  margin-left: var(--nav-width);
+  flex: 1;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* ── Section base ── */
+.section {
+  min-height: 100vh;
+  padding: var(--section-pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── Section heading style ── */
+.section-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* ── Gold divider ── */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin: 1.2rem 0 2.5rem;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.card:hover {
+  background: var(--card-hover);
+  border-color: rgba(245,197,24,0.4);
+  transform: translateY(-3px);
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--dur) var(--ease);
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy);
+}
+.btn-primary:hover {
+  background: #FFD700;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245,197,24,0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  position:relative;
+  left:0cm;
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* ── Badge chip ── */
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(245,197,24,0.12);
+  color: var(--gold);
+  border: 1px solid rgba(245,197,24,0.3);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  :root { --nav-width: 0px; }
+  .main-content { margin-left: 0; }
+  .section { padding: 2rem 1.5rem; }
+  .mobile-menu-open .sidebar { transform: translateX(0); }
+}

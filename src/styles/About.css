@@ -1,0 +1,136 @@
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Left column — identity card */
+.about-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.about-photo-wrap {
+  position: relative;
+}
+
+.about-photo {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: top;
+  border: 2px solid var(--border);
+  aspect-ratio: 4/5;
+  background-color: black;
+}
+
+.about-photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 24px;
+  border: 1.5px solid rgba(245,197,24,0.2);
+  pointer-events: none;
+}
+
+/* Info pills */
+.about-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.about-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.about-info-row:hover { border-color: rgba(245,197,24,0.3); }
+
+.about-info-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.about-info-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+}
+
+.about-info-value {
+  font-size: 0.82rem;
+  color: var(--slate-light);
+  display: block;
+  margin-top: 1px;
+}
+
+/* Right column */
+.about-content {}
+
+.about-summary {
+  font-size: 0.95rem;
+  color: var(--slate-light);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.about-summary p { margin-bottom: 0.9rem; }
+.about-summary strong { color: var(--white); font-weight: 600; }
+
+/* Qualities */
+.about-qualities-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.9rem;
+}
+
+.about-qualities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.quality-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 99px;
+  background: rgba(245,197,24,0.08);
+  border: 1px solid rgba(245,197,24,0.25);
+  color: var(--cream);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all var(--dur) var(--ease);
+}
+
+.quality-chip:hover {
+  background: rgba(245,197,24,0.16);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 220px; margin: 0 auto; }
+}
