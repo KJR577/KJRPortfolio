@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Home.css';
 import profileImg from '../assets/profimg.png';
-import kenvinResume from '../assets/Kenvin_Jose_Roys_j_Resume.pdf';
+import kenvinResume from '..\assets\Kenvin_Jose_Roys_J_Resume.pdf';
 
 function Home() {
   return (
@@ -12,7 +12,7 @@ function Home() {
         <div className="home-top-action">
           <a 
             href={kenvinResume} 
-            download="Kenvin_Jose_Roys_j_Resume.pdf"
+            download="Kenvin_Jose_Roys_J_Resume.pdf"
             className="btn btn-outline btn-sm"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.35rem' }}>
