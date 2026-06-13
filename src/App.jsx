@@ -63,16 +63,16 @@ function App() {
 
       <main className="main-content">
         <div id="section-home">
-          <Home onNavigate={navigate} profileImg={profImg} />
+          <Home/>
         </div>
         <div id="section-about">
-          <About profileImg={profileImg} />
+          <About />
         </div>
         <div id="section-skills">
           <Skills />
         </div>
         <div id="section-projects">
-          <Projects pro1Img={pro1Img} pro2Img={pro2Img} />
+          <Projects/>
         </div>
         <div id="section-education">
           <Education />

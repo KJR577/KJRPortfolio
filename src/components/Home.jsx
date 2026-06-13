@@ -3,7 +3,7 @@ import '../styles/Home.css';
 import profileImg from '../assets/profimg.png';
 import kenvinResume from '../assets/Kenvin_Jose_Roys_j_Resume.pdf';
 
-function Home({ onNavigate }) {
+function Home() {
   return (
     <section className="home-section">
       {/* Text */}

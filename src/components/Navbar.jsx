@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { id: 'contact',        label: 'Contact',        icon: '✉️' },
 ];
 
-function Navbar({ active, onNavigate }) {
+function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNav = (id) => {

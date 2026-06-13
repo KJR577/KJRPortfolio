@@ -17,7 +17,7 @@ const QUALITIES = [
   { icon: '🔍', label: 'Detail-Oriented' },
 ];
 
-function About({ }) {
+function About() {
   return (
     <section className="section">
       <p className="section-eyebrow">Get to know me</p>

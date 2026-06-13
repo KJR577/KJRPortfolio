@@ -27,7 +27,7 @@ const PROJECTS = [
   },
 ];
 
-function Projects({ }) {
+function Projects() {
   const thumbMap = { pro1: pro1Img, pro2: pro2Img };
 
   return (
