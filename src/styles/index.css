@@ -109,3 +109,14 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+.main-content{
+    margin-left:260px;
+}
+
+@media(max-width:900px){
+
+.main-content{
+    margin-left:0;
+}
+
+}

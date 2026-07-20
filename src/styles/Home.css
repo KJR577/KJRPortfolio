@@ -326,3 +326,195 @@
     gap: 1.5rem;
   }
 }
+/* ============================================================
+   ANIMATIONS ONLY (APPEND AT THE END OF YOUR FILE)
+   ============================================================ */
+
+/* Keyframes */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 8px rgba(15, 164, 175, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(15, 164, 175, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 8px rgba(15, 164, 175, 0.2);
+  }
+}
+
+/* ============================================================
+   ENTRY ANIMATIONS
+   ============================================================ */
+
+.home-greeting {
+  animation: fadeInLeft 1s ease both;
+}
+
+.home-name {
+  animation: fadeInLeft 1.2s ease both;
+}
+
+.home-title {
+  animation: fadeInLeft 1.4s ease both;
+}
+
+.home-cta {
+  animation: fadeInUp 1.6s ease both;
+}
+
+.home-stats {
+  animation: fadeInUp 1.8s ease both;
+}
+
+.home-top-action {
+  animation: fadeInUp 1s ease both;
+}
+
+.home-image-wrap {
+  animation: fadeInRight 1.2s ease both;
+}
+
+.home-badge {
+  animation: fadeInUp 2s ease both;
+}
+
+/* ============================================================
+   FLOATING IMAGE EFFECT
+   ============================================================ */
+
+.home-img-ring {
+  animation:
+    fadeInRight 1.2s ease both,
+    floating 5s ease-in-out infinite;
+}
+
+/* ============================================================
+   IMAGE GLOW EFFECT
+   ============================================================ */
+
+.home-img-ring::before,
+.home-img-ring::after {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   HOVER EFFECTS
+   ============================================================ */
+
+.btn-sm {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.btn-sm:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(15, 164, 175, 0.35);
+}
+
+.home-profile-img {
+  transition: transform 0.4s ease;
+}
+
+.home-profile-img:hover {
+  transform: scale(1.04);
+}
+
+.home-stats > * {
+  transition: transform 0.3s ease;
+}
+
+.home-stats > *:hover {
+  transform: translateY(-6px);
+}
+.im-text {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.typing-text {
+  display: block;
+  width: fit-content;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--gold);
+  font-style: italic;
+
+  animation: typing 5s steps(18, end) infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+
+  40% {
+    width: 100%;
+  }
+
+  70% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes blinkCursor {
+  50% {
+    border-color: transparent;
+  }
+}

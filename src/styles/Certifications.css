@@ -170,3 +170,179 @@
 .cert-placeholder-label {
   font-size: 0.8rem;
 }
+/* ============================================================
+   CERTIFICATIONS ANIMATIONS
+   ============================================================ */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Card entrance transition */
+.cert-card {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* Floating card effect */
+.cert-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Animated top border */
+.cert-card::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  background-size: 200% 100%;
+}
+
+.cert-card:hover::before {
+  opacity: 1;
+  animation: certBorder 2s linear infinite;
+}
+
+@keyframes certBorder {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Logo animation */
+.cert-logo {
+  transition: transform .4s ease;
+}
+
+.cert-card:hover .cert-logo {
+  transform: rotate(10deg) scale(1.12);
+}
+
+/* Title animation */
+.cert-title {
+  transition: color .3s ease;
+}
+
+.cert-card:hover .cert-title {
+  color: var(--gold);
+}
+
+/* Issuer animation */
+.cert-issuer {
+  transition: letter-spacing .3s ease;
+}
+
+.cert-card:hover .cert-issuer {
+  letter-spacing: .05em;
+}
+
+/* Date animation */
+.cert-date {
+  transition: transform .3s ease;
+}
+
+.cert-card:hover .cert-date {
+  transform: translateX(5px);
+}
+
+/* Skill tags */
+.cert-skill-tag {
+  transition: all .3s ease;
+}
+
+.cert-skill-tag:hover {
+  transform: translateY(-4px);
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+
+/* Link animation */
+.cert-link-btn {
+  transition: all .3s ease;
+}
+
+.cert-link-btn:hover {
+  color: #ffd95a;
+  transform: translateX(6px);
+}
+
+/* Status badge pulse */
+.cert-status {
+  animation: badgePulse 3s infinite;
+}
+
+@keyframes badgePulse {
+  0%,100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Floating glow */
+.cert-card:hover {
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.35),
+    0 0 20px rgba(245,197,24,.12);
+}
+
+/* Placeholder animation */
+.cert-card.placeholder {
+  transition: all .4s ease;
+}
+
+.cert-card.placeholder:hover {
+  transform: scale(1.02);
+  border-color: rgba(245,197,24,.3);
+}
+
+.cert-placeholder-icon {
+  animation: floatIcon 2.5s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Scroll reveal support */
+.cert-card {
+  opacity: 0;
+  transform: translateY(60px);
+  animation: certReveal .8s forwards;
+}
+
+.cert-card:nth-child(1) { animation-delay: .1s; }
+.cert-card:nth-child(2) { animation-delay: .25s; }
+.cert-card:nth-child(3) { animation-delay: .4s; }
+.cert-card:nth-child(4) { animation-delay: .55s; }
+.cert-card:nth-child(5) { animation-delay: .7s; }
+.cert-card:nth-child(6) { animation-delay: .85s; }
+
+@keyframes certReveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -134,3 +134,411 @@
   .about-grid { grid-template-columns: 1fr; }
   .about-photo { max-width: 220px; margin: 0 auto; }
 }
+/* ============================================================
+   ABOUT SECTION ANIMATIONS
+   ============================================================ */
+
+/* Fade Up */
+@keyframes aboutFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Left */
+@keyframes aboutFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade Right */
+@keyframes aboutFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Zoom In */
+@keyframes aboutZoom {
+  from {
+    opacity: 0;
+    transform: scale(.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Floating Image */
+@keyframes floatingPhoto {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Glow Border */
+@keyframes borderGlow {
+
+  0%,
+  100% {
+    border-color: rgba(245,197,24,.25);
+    box-shadow: 0 0 10px rgba(245,197,24,.12);
+  }
+
+  50% {
+    border-color: var(--gold);
+    box-shadow: 0 0 25px rgba(245,197,24,.35);
+  }
+}
+
+/* ============================================================
+   ENTRY ANIMATIONS
+   ============================================================ */
+
+.about-identity{
+  animation: aboutFadeLeft .9s ease both;
+}
+
+.about-content{
+  animation: aboutFadeRight 1s ease both;
+}
+
+.about-summary{
+  animation: aboutFadeUp 1.2s ease both;
+}
+
+.about-qualities-title{
+  animation: aboutFadeUp 1.35s ease both;
+}
+
+.about-qualities{
+  animation: aboutFadeUp 1.5s ease both;
+}
+
+/* ============================================================
+   PHOTO
+   ============================================================ */
+
+.about-photo-wrap{
+  animation: aboutZoom .9s ease both;
+}
+
+.about-photo{
+  animation: floatingPhoto 5s ease-in-out infinite;
+  transition: transform .4s ease;
+}
+
+.about-photo:hover{
+  transform: scale(1.05);
+}
+
+.about-photo-wrap::after{
+  animation: borderGlow 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   INFO CARDS
+   ============================================================ */
+
+.about-info-row{
+  opacity:0;
+  animation: aboutFadeUp .7s ease forwards;
+}
+
+.about-info-row:nth-child(1){
+  animation-delay:.2s;
+}
+
+.about-info-row:nth-child(2){
+  animation-delay:.35s;
+}
+
+.about-info-row:nth-child(3){
+  animation-delay:.5s;
+}
+
+.about-info-row:nth-child(4){
+  animation-delay:.65s;
+}
+
+.about-info-row:nth-child(5){
+  animation-delay:.8s;
+}
+
+.about-info-row:hover{
+  transform:translateX(8px);
+  box-shadow:0 10px 25px rgba(245,197,24,.15);
+}
+
+/* ============================================================
+   QUALITY CHIPS
+   ============================================================ */
+
+.quality-chip{
+  opacity:0;
+  animation: aboutZoom .5s ease forwards;
+}
+
+.quality-chip:nth-child(1){animation-delay:.2s;}
+.quality-chip:nth-child(2){animation-delay:.3s;}
+.quality-chip:nth-child(3){animation-delay:.4s;}
+.quality-chip:nth-child(4){animation-delay:.5s;}
+.quality-chip:nth-child(5){animation-delay:.6s;}
+.quality-chip:nth-child(6){animation-delay:.7s;}
+.quality-chip:nth-child(7){animation-delay:.8s;}
+.quality-chip:nth-child(8){animation-delay:.9s;}
+
+.quality-chip:hover{
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 8px 20px rgba(245,197,24,.2);
+}
+
+/* ============================================================
+   MOBILE OPTIMIZATION
+   ============================================================ */
+
+@media (max-width:900px){
+
+  .about-identity,
+  .about-content{
+    animation:aboutFadeUp .8s ease both;
+  }
+
+  .about-photo{
+    max-width:220px;
+    margin:auto;
+  }
+
+  .about-info-row:hover{
+    transform:translateY(-4px);
+  }
+
+  .quality-chip:hover{
+    transform:scale(1.04);
+  }
+
+}
+/* ============================================================
+   TEXT ANIMATIONS
+   ============================================================ */
+
+/* Heading Animation */
+.section-title,
+.about-title,
+.about-heading {
+  opacity: 0;
+  animation: titleReveal 1s ease forwards;
+}
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+    letter-spacing: 6px;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: normal;
+  }
+}
+
+/* Summary Paragraphs */
+
+.about-summary p {
+  opacity: 0;
+  animation: paragraphReveal .9s ease forwards;
+}
+
+.about-summary p:nth-child(1) {
+  animation-delay: .2s;
+}
+
+.about-summary p:nth-child(2) {
+  animation-delay: .45s;
+}
+
+.about-summary p:nth-child(3) {
+  animation-delay: .7s;
+}
+
+.about-summary p:nth-child(4) {
+  animation-delay: .95s;
+}
+
+@keyframes paragraphReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Strong Text Highlight */
+
+.about-summary strong {
+  position: relative;
+  display: inline-block;
+  animation: highlightText 2.5s ease infinite;
+}
+
+@keyframes highlightText {
+
+  0%,
+  100% {
+    color: var(--white);
+    text-shadow: none;
+  }
+
+  50% {
+    color: var(--gold);
+    text-shadow: 0 0 12px rgba(245,197,24,.5);
+  }
+}
+
+/* Labels */
+
+.about-info-label {
+  opacity: 0;
+  animation: fadeLabel .7s ease forwards;
+}
+
+.about-info-value {
+  opacity: 0;
+  animation: fadeValue .8s ease forwards;
+}
+
+.about-info-row:nth-child(1) .about-info-label,
+.about-info-row:nth-child(1) .about-info-value {
+  animation-delay: .25s;
+}
+
+.about-info-row:nth-child(2) .about-info-label,
+.about-info-row:nth-child(2) .about-info-value {
+  animation-delay: .4s;
+}
+
+.about-info-row:nth-child(3) .about-info-label,
+.about-info-row:nth-child(3) .about-info-value {
+  animation-delay: .55s;
+}
+
+.about-info-row:nth-child(4) .about-info-label,
+.about-info-row:nth-child(4) .about-info-value {
+  animation-delay: .7s;
+}
+
+.about-info-row:nth-child(5) .about-info-label,
+.about-info-row:nth-child(5) .about-info-value {
+  animation-delay: .85s;
+}
+
+@keyframes fadeLabel {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeValue {
+  from {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Quality Title */
+
+.about-qualities-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-qualities-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245,197,24,.8),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    left: 150%;
+  }
+}
+
+/* Typing Cursor Effect */
+
+.about-summary p:first-child::after {
+  content: "|";
+  color: var(--gold);
+  margin-left: 3px;
+  animation: blink .8s infinite;
+}
+
+@keyframes blink {
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Smooth Hover */
+
+.about-summary p {
+  transition: .35s ease;
+}
+
+.about-summary p:hover {
+  color: var(--white);
+  transform: translateX(8px);
+}

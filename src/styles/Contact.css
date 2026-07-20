@@ -147,3 +147,206 @@
   .contact-grid { grid-template-columns: 1fr; }
   .contact-social-grid { grid-template-columns: 1fr 1fr; }
 }
+/* ============================================================
+   CONTACT ANIMATIONS
+   ============================================================ */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Intro animation */
+.contact-intro {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* Contact Cards */
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* Shine effect */
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.12),
+    transparent
+  );
+  transition: left .7s ease;
+}
+
+.contact-card:hover::before {
+  left: 140%;
+}
+
+.contact-card:hover {
+  transform: translateX(8px) scale(1.02);
+  box-shadow: 0 16px 35px rgba(0,0,0,.25);
+}
+
+/* Icon animation */
+.contact-card-icon {
+  transition: transform .4s ease;
+}
+
+.contact-card:hover .contact-card-icon {
+  transform: rotate(10deg) scale(1.15);
+}
+
+/* Arrow */
+.contact-card-arrow {
+  transition: transform .35s ease;
+}
+
+.contact-card:hover .contact-card-arrow {
+  transform: translateX(8px);
+}
+
+/* Label */
+.contact-card-label {
+  transition: color .3s ease;
+}
+
+.contact-card:hover .contact-card-label {
+  color: #ffd95a;
+}
+
+/* Value */
+.contact-card-value {
+  transition: color .3s ease;
+}
+
+.contact-card:hover .contact-card-value {
+  color: var(--white);
+}
+
+/* Social Cards */
+.social-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease,
+    border-color .4s ease;
+}
+
+.social-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(245,197,24,.08),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.social-card:hover::after {
+  opacity: 1;
+}
+
+.social-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.3),
+    0 0 18px rgba(245,197,24,.12);
+}
+
+.social-card-icon {
+  transition: transform .4s ease;
+}
+
+.social-card:hover .social-card-icon {
+  transform: scale(1.25) rotate(10deg);
+}
+
+.social-card-name {
+  transition: color .3s ease;
+}
+
+.social-card:hover .social-card-name {
+  color: var(--gold);
+}
+
+.social-card-action {
+  transition: transform .3s ease;
+}
+
+.social-card:hover .social-card-action {
+  transform: translateX(6px);
+}
+
+/* Stagger loading animation */
+.contact-card,
+.social-card {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: contactReveal .8s forwards;
+}
+
+.contact-card:nth-child(1) { animation-delay: .1s; }
+.contact-card:nth-child(2) { animation-delay: .25s; }
+.contact-card:nth-child(3) { animation-delay: .4s; }
+.contact-card:nth-child(4) { animation-delay: .55s; }
+
+.social-card:nth-child(1) { animation-delay: .7s; }
+.social-card:nth-child(2) { animation-delay: .85s; }
+.social-card:nth-child(3) { animation-delay: 1s; }
+.social-card:nth-child(4) { animation-delay: 1.15s; }
+
+/* Floating icons */
+.contact-card-icon,
+.social-card-icon {
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+/* Keyframes */
+@keyframes contactReveal {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatIcon {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

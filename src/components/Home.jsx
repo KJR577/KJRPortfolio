@@ -26,9 +26,10 @@ function Home() {
 
         <p className="home-greeting">👋 Hello,</p>
 
-        <h1 className="home-name">
-          I'm <span>Kenvin</span> Jose Roys
-        </h1>
+       <h1 className="home-name">
+  <span className="im-text">I'm</span>
+  <span className="typing-text">Kenvin Jose Roys</span>
+</h1>
 
         <p className="home-title">MERN Stack Developer · BSc Computer Science</p>
 

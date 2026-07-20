@@ -34,10 +34,7 @@ function Navbar({ active, onNavigate }) {
         {mobileOpen ? '✕' : '☰'}
       </button>
 
-      <aside
-        className="sidebar"
-        style={mobileOpen ? { transform: 'translateX(0)' } : {}}
-      >
+     <aside className={`sidebar ${mobileOpen ? "open" : ""}`}>
         {/* Profile */}
         <div className="nav-profile">
           <img

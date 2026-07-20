@@ -133,3 +133,206 @@
   text-align: center;
   margin-top: 1rem;
 }
+/*=========================================================
+PROJECT ANIMATIONS
+=========================================================*/
+
+/* Hidden before scroll */
+
+.project-card{
+    opacity:0;
+    transform:translateY(60px) scale(.95);
+}
+
+/* Reveal */
+
+.project-card.show{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.project-card{
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        box-shadow .4s ease;
+}
+
+/*==================================
+Image Zoom
+==================================*/
+
+.project-thumb{
+    transition:
+        transform .7s ease,
+        filter .5s ease;
+}
+
+.project-card:hover .project-thumb{
+
+    transform:scale(1.08);
+
+    filter:brightness(1.1);
+
+}
+
+/*==================================
+3D Hover Card
+==================================*/
+
+.project-card{
+
+    transform-style:preserve-3d;
+
+}
+
+.project-card:hover{
+
+    transform:
+        perspective(1000px)
+        rotateX(4deg)
+        rotateY(-4deg)
+        translateY(-10px);
+
+}
+
+/*==================================
+Buttons
+==================================*/
+
+.project-btn{
+
+    transition:all .35s ease;
+
+}
+
+.project-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 25px rgba(245,197,24,.25);
+
+}
+
+/*==================================
+Tags
+==================================*/
+
+.project-tag{
+
+    transition:all .35s ease;
+
+}
+
+.project-tag:hover{
+
+    background:#f5c518;
+
+    color:#111;
+
+    transform:translateY(-3px);
+
+}
+
+/*==================================
+Floating Image Shine
+==================================*/
+
+.project-thumb{
+
+    position:relative;
+
+}
+
+.project-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,.18),
+    transparent 70%
+    );
+
+    transform:translateX(-120%);
+
+    transition:transform .9s ease;
+
+    pointer-events:none;
+
+}
+
+.project-card:hover::before{
+
+    transform:translateX(120%);
+
+}
+
+/*==================================
+Project Title
+==================================*/
+
+.project-title{
+
+    transition:.3s;
+
+}
+
+.project-card:hover .project-title{
+
+    color:var(--gold);
+
+}
+
+/*==================================
+Description
+==================================*/
+
+.project-desc{
+
+    transition:.3s;
+
+}
+
+.project-card:hover .project-desc{
+
+    color:#ddd;
+
+}
+
+/*==================================
+Pulse Animation
+==================================*/
+
+@keyframes pulse{
+
+0%{
+
+box-shadow:0 0 0 rgba(245,197,24,0);
+
+}
+
+50%{
+
+box-shadow:0 0 25px rgba(245,197,24,.15);
+
+}
+
+100%{
+
+box-shadow:0 0 0 rgba(245,197,24,0);
+
+}
+
+}
+
+.project-card:hover{
+
+animation:pulse 2s infinite;
+
+}

@@ -1,23 +1,33 @@
-/* Container Shell Layout Configuration */
+
+/* ============================================================
+   DASH SECTION - COMPLETE RESPONSIVE CSS
+   ============================================================ */
+
 #divmaind {
   background-color: #0b0f19;
   min-height: 100vh;
-  width: 100vw; 
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Inter', sans-serif;
   color: #f3f4f6;
+  padding: 2rem;
   box-sizing: border-box;
 }
 
-#divmaind *, #divmaind *::before, #divmaind *::after {
+#divmaind *,
+#divmaind *::before,
+#divmaind *::after {
   box-sizing: inherit;
 }
 
-/* Ambient Radial Blurs */
+/* ============================================================
+   BACKGROUND BLURS
+   ============================================================ */
+
 .blur-gradient {
   position: absolute;
   width: 400px;
@@ -27,29 +37,63 @@
   opacity: 0.15;
   z-index: 1;
   pointer-events: none;
+  animation: floatBlur 8s ease-in-out infinite alternate;
 }
+
 .bg-top {
   top: -10%;
   left: -10%;
   background-color: #10b981;
 }
+
 .bg-bottom {
   bottom: -10%;
   right: -10%;
   background-color: #06b6d4;
+  animation-delay: 2s;
 }
 
-/* Central Responsive Content Shell Grid */
+@keyframes floatBlur {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+}
+
+/* ============================================================
+   MAIN CONTENT LAYOUT
+   ============================================================ */
+
 .dash-container {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
-  max-width: 1100px;
-  width: 90%;
-  gap: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  gap: 4rem;
   z-index: 10;
+  animation: containerFade 1s ease forwards;
 }
+
+@keyframes containerFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   IMAGE SECTION
+   ============================================================ */
 
 .dash-img-wrapper {
   flex: 1;
@@ -59,19 +103,61 @@
 }
 
 #imgpro {
-  width: 320px;
-  height: 320px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
+  width: clamp(220px, 30vw, 340px);
+  height: clamp(220px, 30vw, 340px);
+
+  border-radius: 20%;
   object-fit: cover;
+
   border: 4px solid #10b981;
+
   box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  transition: all 0.5s ease;
+
+  animation:
+    imagePop 1s ease forwards,
+    imageFloat 4s ease-in-out infinite 1.2s;
+}
+
+@keyframes imagePop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  70% {
+    transform: scale(1.08);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes imageFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 #imgpro:hover {
-  transform: scale(1.04);
+  transform: scale(1.12);
+  box-shadow:
+    0 0 40px rgba(16, 185, 129, 0.5),
+    0 0 80px rgba(16, 185, 129, 0.3);
 }
+
+/* ============================================================
+   TEXT CONTENT
+   ============================================================ */
 
 .dash-text-content {
   flex: 1.2;
@@ -81,107 +167,206 @@
 }
 
 #welcome {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   text-transform: uppercase;
   letter-spacing: 3px;
   color: #10b981;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
   font-weight: 600;
+  margin-bottom: 0.5rem;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
 }
 
 #name {
-  font-size: 3.5rem;
+  font-size: clamp(2.3rem, 5vw, 3.5rem);
   font-weight: 800;
-  color: #ffffff;
+  color: #fff;
   line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  
-  /* Forces your name to stay completely straight on one horizontal line */
-  white-space: nowrap; 
   letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  min-height: 70px;
 }
 
 #profe {
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
   font-weight: 500;
   color: #9ca3af;
-  margin-top: 0;
   margin-bottom: 2.5rem;
+
+  opacity: 0;
+
+  animation:
+    fadeUp 0.8s ease forwards 0.4s,
+    professionFloat 3s ease-in-out infinite 1.5s;
 }
 
-/* Interactive Slider Button Configurations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes professionFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* ============================================================
+   BUTTON
+   ============================================================ */
+
 .entry-action {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  cursor: pointer;
+
   width: fit-content;
+
   padding: 0.75rem 1.5rem;
+
+  border-radius: 50px;
+
+  cursor: pointer;
+  user-select: none;
+
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 50px;
+
   transition: all 0.3s ease;
-  user-select: none;
-}
 
-.entry-action span {
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: #f3f4f6;
-}
-
-#arrow {
-  width: 24px;
-  height: 24px;
-  display: block;
-  transition: transform 0.3s ease;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
 }
 
 .entry-action:hover {
   background: rgba(16, 185, 129, 0.1);
   border-color: #10b981;
   box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+  transform: translateY(-4px);
 }
 
-.entry-action:hover #arrow {
-  transform: translateX(6px);
+.entry-action:active {
+  transform: scale(0.96);
 }
 
-/* Smartphone Adaptive Breakpoints */
+.entry-action span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f3f4f6;
+}
+
+#arrow {
+  width: 24px;
+  height: 24px;
+
+  animation: arrowMove 1.8s ease-in-out infinite;
+}
+
+@keyframes arrowMove {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+/* ============================================================
+   TABLET RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 992px) {
+
+  .dash-container {
+    gap: 2rem;
+  }
+
+  #imgpro:hover {
+    transform: scale(1.08);
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+
 @media (max-width: 768px) {
+
   #divmaind {
-    overflow-y: auto;
-    padding: 2rem 0;
+    padding: 3rem 1.5rem;
   }
 
   .dash-container {
     flex-direction: column;
     text-align: center;
-    gap: 2rem;
-    width: 85%;
+    gap: 2.5rem;
   }
 
   .dash-text-content {
     align-items: center;
-    width: 100%;
   }
 
   #name {
-    /* Auto-scales the font size according to phone screens to stay straight without clipping */
-    font-size: 8.5vw; 
-    margin-bottom: 0.5rem;
+    white-space: normal;
+    min-height: auto;
   }
 
-  #profe {
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+  .entry-action {
+    margin: 0 auto;
   }
 
   #imgpro {
-    width: 220px;
-    height: 220px;
+    width: 240px;
+    height: 240px;
+  }
+
+  #imgpro:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  #imgpro {
+    width: 200px;
+    height: 200px;
+  }
+
+  #welcome {
+    letter-spacing: 2px;
+  }
+
+  .entry-action {
+    padding: 0.7rem 1.2rem;
+  }
+
+  #name {
+    font-size: 2rem;
+  }
+
+  #profe {
+    font-size: 1.1rem;
   }
 }

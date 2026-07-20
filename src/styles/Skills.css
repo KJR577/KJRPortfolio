@@ -129,3 +129,140 @@
 @media (max-width: 900px) {
   .skills-layout { grid-template-columns: 1fr; }
 }
+/* ===========================
+   SCROLL ANIMATION
+=========================== */
+
+.skill-bar-item,
+.skills-category,
+.skill-tag {
+  opacity: 0;
+  transform: translateY(35px);
+}
+
+.skill-bar-item.show,
+.skills-category.show,
+.skill-tag.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-bar-item {
+  transition: all .8s ease;
+}
+
+.skills-category {
+  transition: all .8s ease;
+}
+
+.skill-tag {
+  transition:
+    transform .45s ease,
+    opacity .6s ease,
+    background .35s ease,
+    border-color .35s ease;
+}
+
+/* ===========================
+   Progress Bar Animation
+=========================== */
+
+.skill-bar-fill {
+  width: 0;
+  height: 100%;
+  border-radius: 99px;
+  transition: width 1.5s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine Effect */
+
+.skill-bar-fill::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-40%;
+  width:40%;
+  height:100%;
+  background:rgba(255,255,255,.5);
+  filter:blur(4px);
+  animation:shine 2s infinite;
+}
+
+@keyframes shine{
+
+  from{
+    left:-40%;
+  }
+
+  to{
+    left:140%;
+  }
+
+}
+
+/* ===========================
+   Hover Animation
+=========================== */
+
+.skill-tag:hover{
+  transform:translateY(-6px) scale(1.08);
+  box-shadow:0 10px 25px rgba(245,197,24,.25);
+}
+
+/* Floating Animation */
+
+.skill-tag:nth-child(odd){
+  animation:floating 4s ease-in-out infinite;
+}
+
+.skill-tag:nth-child(even){
+  animation:floating 5s ease-in-out infinite;
+}
+
+@keyframes floating{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-4px);
+  }
+
+}
+
+/* Smooth Fade */
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+/* =====================================
+   Scroll Reveal Animation
+===================================== */
+
+/* Initial hidden state */
+.project-card {
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* Visible state */
+.project-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
